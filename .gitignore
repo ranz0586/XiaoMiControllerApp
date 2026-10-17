@@ -1,0 +1,23 @@
+node_modules/
+dist/
+.venv/
+.venv311/
+.cache/
+__pycache__/
+.pytest_cache/
+backend/data/
+test-results/
+playwright-report/
+*.log
+*.tsbuildinfo
+artifacts/
+
+# Android generated files and secrets
+android/.gradle/
+android/local.properties
+android/**/build/
+*.jks
+*.keystore
+.env
+.env.*
+!.env.example

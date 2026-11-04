@@ -1,10 +1,10 @@
-# Air Studio - standalone Xiaomi purifier controller
+# Air Studio - standalone Xiaomi air purifier controller App
 
-An Android app based on Air Studio at `D:\GitHub\XioamiApp`. The Android version talks directly to supported purifiers over local Wi-Fi through embedded python-miio. No running computer, Raspberry Pi, or HTTP backend is needed during Android use.
+The Android app talks directly to supported purifiers over local Wi-Fi through embedded python-miio (https://github.com/rytilahti/python-miio). No running computer, Raspberry Pi, or HTTP backend is needed.
 
 Includes multiple saved devices, PM2.5 concentration (µg/m³), temperature, humidity, filter care, bounded history, power, Auto/Sleep/Favorite modes, favorite level, child lock, and buzzer where available. Unknown properties stay unknown and unsupported controls are disabled. Commands read back actual device state. Polling pauses in the background and refreshes on resume. Connection failures show an error and retain saved readings.
 
-Favorite fan level applies automatically when the slider is released (or after keyboard adjustment), without an Apply button. The displayed level follows the device's readback; failures show an error and retain the last confirmed level.
+Favorite fan level applies automatically when the slider is released. The displayed level follows the device's readback; failures show an error and retain the last confirmed level.
 
 Device → Filter care → Reset filter asks for confirmation after replacing the filter, then calls python-miio's `reset_filter()` and refreshes the actual filter counters. The button is disabled when the adapter lacks that method or the device is offline. Firmware may reject the command; an error is shown without inventing successful reset readings. Demo mode simulates the reset without hardware traffic.
 
@@ -86,4 +86,4 @@ Open http://127.0.0.1:8000 and stop with Ctrl+C. The desktop path does not use t
 
 ## Release limitations
 
-The user confirmed live PM2.5 readings, power/mode changes, saved device after reopening and Wi-Fi reconnection on Android 16 with a Xiaomi Air Purifier 2S China model. The user subsequently confirmed manual verification of all working features and waived connected-phone validation; see [phone acceptance](docs/PHONE_VALIDATION.md). Native instrumentation was compiled but not executed. Targeting API 37 later requires the Android local-network runtime permission flow; the current API 36 target uses INTERNET permission. There is no background monitoring or notification service. Python native binaries increase APK size. Release readiness requires supported-device tests, 16 KB native binary page-size validation, dependency review, and a private release signing key outside version control. Do not distribute this debug artifact as a Play Store release.
+The user confirmed live PM2.5 readings, power/mode changes, saved device after reopening, and Wi-Fi reconnection on Android 16 with a Xiaomi Air Purifier 2S China model. The user subsequently confirmed manual verification of all working features and waived connected-phone validation; see [phone acceptance](docs/PHONE_VALIDATION.md). Native instrumentation was compiled but not executed. Targeting API 37 later requires the Android local-network runtime permission flow; the current API 36 target uses INTERNET permission. There is no background monitoring or notification service. Python native binaries increase APK size. Release readiness requires supported-device tests, 16 KB native binary page-size validation, dependency review, and a private release signing key outside version control. Do not distribute this as a Play Store release.
